@@ -1,0 +1,34 @@
+    static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    public static void main(String[] args) {
+        numtoText("8 5 12 12 15 - 23 15 18 12 4");
+        texttoNum("Hello World");
+    }
+    public static void numtoText(String message){
+        String[] splitmessage = message.split(" ");
+        StringBuilder word = new StringBuilder();
+        for(int i = 0; i < splitmessage.length; i++){
+            if(!splitmessage[i].equals("-")) {
+                word.append(alphabet[Integer.parseInt(splitmessage[i]) - 1]);
+            }
+            else{
+                word.append(" ");
+            }
+        }
+        word = new StringBuilder(word.toString().toUpperCase());
+        System.out.println(word);
+    }
+    public static void texttoNum(String message){
+        StringBuilder word = new StringBuilder();
+        message = message.toLowerCase();
+        for(int i = 0; i < message.length(); i++){
+            for(int j = 0; j < alphabet.length; j++){
+                if(message.charAt(i) == alphabet[j]){
+                    word.append(j + 1).append(" ");
+                }
+            }
+            if(message.charAt(i) == ' '){
+                word.append("-").append(" ");
+            }
+        }
+        System.out.println(word);
+    }
